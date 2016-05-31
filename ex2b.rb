@@ -23,7 +23,9 @@ puts 'Performing MSA...'
 puts "Writing MSA report to #{OUTPUT_FILE}..."
 File.open(OUTPUT_FILE, 'w') do |f|
   a = Bio::Alignment.new(seqs)
-  puts a.consensus
+  puts a.class.name
+  factory = Bio::ClustalW.new
+  a2 = a.do_align(factory)
 end
 
 puts 'Done!'

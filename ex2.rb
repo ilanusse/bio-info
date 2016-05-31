@@ -37,6 +37,7 @@ File.open(OUTPUT_FILE, 'w') do |f|
       f.puts " - % Overlapping: #{hit.percent_identity}"
       f.puts " - Query sequence: #{hit.query_seq}"
       f.puts " - Subject sequence: #{hit.target_seq}"
+      puts Bio::Sequence.auto(hit.target_seq).output_fasta
       hit.hsps.each_with_index do |hsps, hsps_index|
         f.puts " - Bit score: #{hsps.bit_score}"
         f.puts " - Gaps: #{hsps.gaps}"
