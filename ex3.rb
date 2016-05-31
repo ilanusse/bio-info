@@ -15,11 +15,11 @@ puts "Reading from #{INPUT_FILE}..."
 begin
   entries = Bio::GenBank.open(INPUT_FILE)
 rescue => e
-  puts "Whoops, an error has appeared: #{e}"
+  puts "Whoops, an error has appeared: #{e}" 
   exit 1
 end
 
 puts "Writing to #{OUTPUT_FILE}..."
-File.open(OUTPUT_FILE, 'w') { |file| entries.each_entry { |entry| file.write(entry.to_biosequence.output_fasta) unless entry.to_biosequence.to_s.empty? } }
+File.open(OUTPUT_FILE, 'w') { |file| entries.each_entry { |entry| file.write(entry.to_biosequence.output_fasta) } }
 
 puts 'Done!'
