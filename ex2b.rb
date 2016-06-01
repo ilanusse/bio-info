@@ -19,13 +19,18 @@ rescue => e
   exit 1
 end
 
-puts 'Performing MSA...'
-puts "Writing MSA report to #{OUTPUT_FILE}..."
 File.open(OUTPUT_FILE, 'w') do |f|
   a = Bio::Alignment.new(seqs)
-  puts a.class.name
-  factory = Bio::ClustalW.new
-  a2 = a.do_align(factory)
+  clustalw = Bio::ClustalW.new
+  puts 'Performing MSA...'
+  a.do_align(clustalw)
+  puts "Writing MSA report to #{OUTPUT_FILE}..."
+  f.write(clustalw.output)
+  f.write(clustalw.data_stdout)
+  f.write("\nCommand run:\n")
+  f.write(clustalw.command.inject("") { |c, t| "#{c.to_s} #{t}" } + "\n")
+  f.write("\nExit Status:\n")
+  f.write(clustalw.exit_status)
 end
 
 puts 'Done!'
