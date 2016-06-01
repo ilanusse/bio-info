@@ -5,14 +5,15 @@ if ARGV.length > 1
   exit 1
 end
 
-INPUT_FILE = 'ex2msa.input'
+INPUT_FILE = 'a.fas'
 OUTPUT_FILE = ARGV[0] || 'ex2b.out'
 
 puts "Reading from #{INPUT_FILE}..."
 seqs = []
 begin
-  File.readlines(INPUT_FILE).each do |line|
-    seqs << Bio::Sequence::NA.new(line)
+  fasta_info = Bio::FlatFile.open(Bio::FastaFormat, ARGV[0])
+  fasta_info.each_entry do |entry|
+    seqs << entry.to_biosequence
   end
 rescue => e
   puts "Whoops, an error has appeared: #{e}"
