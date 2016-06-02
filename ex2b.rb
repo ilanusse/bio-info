@@ -5,13 +5,13 @@ if ARGV.length > 1
   exit 1
 end
 
-INPUT_FILE = 'a.fas'
+INPUT_FILE = 'msa.fas'
 OUTPUT_FILE = ARGV[0] || 'ex2b.out'
 
 puts "Reading from #{INPUT_FILE}..."
 seqs = []
 begin
-  fasta_info = Bio::FlatFile.open(Bio::FastaFormat, ARGV[0])
+  fasta_info = Bio::FlatFile.open(Bio::FastaFormat, INPUT_FILE)
   fasta_info.each_entry do |entry|
     seqs << entry.to_biosequence
   end
