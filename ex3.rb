@@ -8,18 +8,17 @@ elsif ARGV.length > 2
   exit 1
 end
 
-INPUT_FILE = ARGV[0]
-OUTPUT_FILE = ARGV[1] || 'ex1result.fas'
+INPUT_FILE = 'ex2.out'
+PATTERN = ARGV[0]
 
-puts "Reading from #{INPUT_FILE}..."
+puts "Searching in #{INPUT_FILE}..."
 begin
-  entries = Bio::GenBank.open(INPUT_FILE)
+  matches =  File.open(INPUT_FILE).grep(/#{PATTERN}/)
+  matches = matches.join("\n\n")
+  puts matches
 rescue => e
-  puts "Whoops, an error has appeared: #{e}" 
+  puts "Whoops, an error has appeared: #{e}"
   exit 1
 end
-
-puts "Writing to #{OUTPUT_FILE}..."
-File.open(OUTPUT_FILE, 'w') { |file| entries.each_entry { |entry| file.write(entry.to_biosequence.output_fasta) } }
 
 puts 'Done!'
