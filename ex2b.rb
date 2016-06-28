@@ -1,12 +1,12 @@
 require 'bio'
 
-if ARGV.length > 1
+if ARGV.length > 2
   puts 'Please do not add any extra parameters'
   exit 1
 end
 
-INPUT_FILE = 'msa.fas'
-OUTPUT_FILE = ARGV[0] || 'ex2b.out'
+INPUT_FILE = ARGV[0] || 'msa.fas'
+OUTPUT_FILE = ARGV[1] || 'ex2b.out'
 
 puts "Reading from #{INPUT_FILE}..."
 seqs = []

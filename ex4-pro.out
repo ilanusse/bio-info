@@ -1,0 +1,27 @@
+########################################
+# Program: patmatmotifs
+# Rundate: Mon 27 Jun 2016 20:42:55
+# Commandline: patmatmotifs
+#    -full
+#    -noprune
+#    -sequence ex1result.fas
+#    -auto
+#    -stdout
+# Report_format: dbmotif
+# Report_file: stdout
+########################################
+
+#=======================================
+#
+# Sequence: NM_170707     from: 1   to: 3239
+# HitCount: 0
+#
+# Full: Yes
+# Prune: No
+# Data_file: /usr/share/EMBOSS/data/PROSITE/prosite.lines
+#
+#=======================================
+
+
+#---------------------------------------
+#---------------------------------------
